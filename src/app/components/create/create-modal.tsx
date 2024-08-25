@@ -315,6 +315,7 @@ export default function CreateModal() {
         .catch(error => {
           console.error('Error:', error);
           setPosting(false);
+          setWarning('something went wrong')
         });
     }
     catch (error) {
