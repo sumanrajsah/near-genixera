@@ -1,0 +1,70 @@
+.connect-button{
+    background-color: #D2BD00;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color:#0E0C01;
+    font-weight: 900;
+    font-size: 16px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    width: 300px;
+    svg{
+        fill:#0E0C01;
+        height: 25px;
+        width: 25px;
+    }
+}
+.connect-button:hover{
+    transform: scale(1.05);
+    background: #0E0C01;
+    color: #D2BD00;
+    border: 2px solid #D2BD00;
+    svg{
+        fill: #D2BD00;
+    }
+}
+.account-button{
+
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: #0E0C01;
+    color: #D2BD00;
+    border: 2px solid #D2BD00;
+    font-weight: 900;
+    font-size: 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 300px;
+}
+.account-button:hover{
+    transform: scale(1.05);
+
+}
+.chain-button{
+    background:#0E0C01 ;
+    border: 2px solid #D2BD00;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 900;
+    font-size: 14px;
+    border-radius: 50px;
+    cursor: pointer;
+    color: #D2BD00;
+}
+
+/********************************** 500px  *********************************/
+@media (max-width:500px) {
+    .connect-button{
+        width: 200px;
+        padding: 7px;
+    }
+    }

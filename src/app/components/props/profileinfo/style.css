@@ -1,0 +1,200 @@
+.follower-body {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #1d1c14ac;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.follower-cont {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 600px;
+    background: #0E0C01;
+    border-radius: 20px;
+overflow: hidden;
+z-index: 1;
+}
+
+.follower-top {
+    position: absolute;
+    display: flex;
+    background: #0E0C01;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    top: 0%;
+    width: 100%;
+    height: 7vh;
+    z-index: 1;
+    /* background-color: red; */
+}
+
+.back-bt-cont {
+    position: absolute;
+    display: flex;
+    background: transparent;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    left: 2%;
+    gap: 10px;
+    font-weight: 900;
+}
+
+.back-bt {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: transparent;
+    border: none;
+    height: 35px;
+    font-size: 40px;
+    color: #D2BD00;
+    width: 35px;
+    border-radius: 100%;
+    cursor: pointer;
+
+}
+
+.back-bt:hover {
+    transform: scale(1.05);
+    color: #0E0C01;
+    background: #D2BD00;
+    border: none;
+
+}
+.follower-body-cont{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    gap: 10px;
+}
+.followers-box{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top:7vh;
+    width: 100%;
+    padding: 10px;
+    overflow: hidden;
+    &&:hover{
+        background: #1d1c1456;
+        cursor: pointer;
+    }
+
+}
+.f-bio{
+    position: relative;
+    display: flex;
+    left:60px;
+    width: 90%;
+}
+.followers-profile{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    h4{
+        color: white;
+
+        span{
+            color: #D2BD00;
+        }
+    }
+}
+.fp-img-cont{
+    position: relative;
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    .fprofile-img{
+        height: 100%;
+        width: 100%;
+    }
+}
+.f-button{
+    position: absolute;
+    display: flex;
+    right: 2%;
+    background: #D2BD00;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+    &&:hover{
+        border: 2px solid #D2BD00;
+        background: #0E0C01;
+        color: #D2BD00;
+    }
+}
+
+.loader-u{
+    position: fixed;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: zoomInOut 5s infinite;
+    h1{
+        color: #D2BD00;
+        font-size: 40px;
+    }
+}
+@keyframes zoomInOut {
+    0% {
+        transform: scale(0.5);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.5);
+    }
+}
+.loader-logo-cont{
+    width: 200px;
+    height: 200px;
+}
+.loader-logo{
+    height: 100%;
+    width: 100%;
+}
+/********************************** 650px *******************************/
+@media (max-width:650px) {
+    .follower-cont{
+        width: 90%;
+    }
+}
+/********************************** 500px *******************************/
+@media (max-width:500px) {
+    .follower-cont{
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}

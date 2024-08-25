@@ -1,0 +1,44 @@
+.loader{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top:0%;
+    width: 100%;
+    height: 100%;
+    background: #0E0C01;
+    z-index: 1;
+
+}
+.loader-u{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: zoomInOut 5s infinite;
+    h1{
+        color: #D2BD00;
+        font-size: 40px;
+    }
+}
+@keyframes zoomInOut {
+    0% {
+        transform: scale(0.5);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0.5);
+    }
+}
+.loader-logo-cont{
+    width: 200px;
+    height: 200px;
+}
+.loader-logo{
+    height: 100%;
+    width: 100%;
+}

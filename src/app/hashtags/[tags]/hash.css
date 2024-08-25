@@ -1,0 +1,79 @@
+.hashtagsbody{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: scroll;
+    scrollbar-color: #D2BD00 transparent; 
+}
+
+.back-cont-t{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: #d2bd001d;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    width: 650px;
+    height: 7vh;
+    top:0%;
+    z-index: 1;
+gap: 10px;
+    font-weight: 900;
+    h3{
+        position: absolute;
+        display: flex;
+        left: 60px;
+    }
+}
+.back-button-t{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: transparent;
+    border: 2px solid #D2BD00;
+    height: 40px;
+    top: 15%;
+    left: 2%;
+    font-size: 28px;
+    color: #D2BD00;
+    width: 40px;
+    border-radius: 100%;
+    cursor: pointer;
+
+}
+.back-button-t:hover{
+    transform: scale(1.1);
+    color: #0E0C01;
+    background: #D2BD00;
+    border: none;
+    svg{
+        fill: #0E0C01;
+    }
+
+}
+.hash-posts-cont{
+    position: absolute;
+    /* background: red; */
+    min-height: 100vh;
+    top:10%;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 10vh;
+}
+/****************************** 650px ******************************/
+@media (max-width:650px) {
+    .back-cont-t{
+        width: 99%;
+    }
+}

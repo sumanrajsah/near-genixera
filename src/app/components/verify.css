@@ -1,0 +1,36 @@
+.check-h{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #0E0C01;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    h1{
+        color: #D2BD00;
+    }
+
+
+}
+.check-logo-cont{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    width: auto;
+    top:30%;
+
+}
+
+.check-logo{
+    height: 100%;
+    width: auto;
+}
+.verify-btn-cont{
+    position: absolute;
+    display: flex;
+    bottom: 20%;
+}

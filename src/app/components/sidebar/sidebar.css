@@ -1,0 +1,440 @@
+.sbody{
+    position: fixed;
+    display: flex;
+    background: #0E0C01;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left:1%;
+    height: 98vh;
+    width:250px;
+    border:1px solid #686136;
+    border-radius: 20px;
+}
+@keyframes slideInMenu {
+    from {
+        left: 1%; /* Starting position */
+    }
+    to {
+        left: -100%; /* Ending position */
+    }
+}
+
+@keyframes slideOutMenu {
+    from {
+        left: -100%; /* Starting position */
+    }
+    to {
+        left: 1%; /* Ending position */
+    }
+}
+
+.show-sidebar-menu {
+    animation: slideInMenu 0.5s forwards;
+}
+
+.hide-sidebar-menu {
+    animation: slideOutMenu 0.5s forwards;
+}
+.check{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #0E0C01;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+
+    .sidebar-logo-cont{
+        height: 200px;
+        top:20%;
+    }
+}
+.sidebar-logo-cont{
+    position: absolute;
+    height: 50px;
+    width: auto;
+    top:5%;
+}
+
+.sidebar-logo{
+    height: 100%;
+    width: auto;
+}
+.profilebar-cont{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center ;
+    width: 100%;
+    bottom: 5%;
+}
+.profilebar-body{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center ;
+    width: 100%;
+    height: 80px;
+/* background: red; */
+}
+.profileBar{
+
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 70px;
+    background: none;
+    border-radius: 10px;
+
+    h3{
+        position: absolute;
+        color: #D2BD00;
+        font-size: 16px;
+        right:20%;
+    }
+
+    
+    
+}
+.profileBar:hover{
+    cursor: pointer;
+    background: #1D1C14;
+}
+.logout-button{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    background: none;
+    /* border: 1px solid #D2BD00; */
+    text-align: left;
+    border: none;
+    color: #D2BD00;
+    font-weight: 900;
+    font-size: 14px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    bottom:2%;
+    gap: 10px;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    svg{
+       
+        fill: #D2BD00;
+        width: 30px;
+        left: 5%;
+    }
+}
+.logout-button:hover{
+    background: #0E0C01;
+}
+.menu{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    top:15%;
+    gap: 20px;
+}
+.menu-button{
+    position: relative;
+    border: none;
+    display: flex;
+    background: none;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    width:90%;
+    border-radius: 50px;
+    height: 40px ;
+    color: #686136;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    gap:10px;
+}
+.menu-button:hover{
+    background: #1D1C14;
+    color: #D2BD00;
+}
+.activeButton{
+    background-color: #1D1C14;
+    .menu-button{
+        color: #D2BD00;
+    }
+}
+.more-button{
+    position: relative;
+    border: none;
+    display: flex;
+    background: none;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    width:90%;
+    border-radius: 50px;
+    height: 40px ;
+    color: #686136;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    gap:20px;
+}
+.more-button:hover{
+    background: #1D1C14;
+    color: #D2BD00;
+}
+.create-button{
+    position: absolute;
+    text-align: center;
+    background: #D2BD00;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    bottom:15%;
+    width: 90%;
+    color:black;
+    font-weight: 900;
+    font-size: 16px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    left:5%;
+}
+.create-button:hover{
+    background: #1D1C14;
+    border: 2px solid #D2BD00;
+    color: #D2BD00;
+}
+.logout-m{
+    position:fixed;
+    background: #D2BD00;
+    color: #0E0C01;
+    left:45%;
+    bottom:10%;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.profile-image{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:50px;
+    height:50px;
+    border-radius: 100%;
+    overflow: hidden;
+    left: 5%;
+    border: 2px solid #D2BD00;
+    Image{
+        width: 100%;
+    }
+}
+.dots{
+    position: absolute;
+    right: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    div{
+        height: 7px;
+        width: 7px;
+        background: #D2BD00;
+        border-radius: 100%;
+    }
+}
+.profile-dropdown{
+    position:absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center ;
+bottom: 95%;
+border-radius: 10px;
+    background: #1D1C14;
+    border: 1px solid #D2BD00;
+    width: 90%;
+    padding: 5px;
+    height: auto;
+    overflow: hidden;
+}
+.settings{
+    position: absolute;
+    background: none;
+    /* border: 1px solid #D2BD00; */
+    text-align: center;
+    border: none;
+    color: #D2BD00;
+    font-weight: 900;
+    font-size: 16px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+    top:5%;
+    cursor: pointer;
+}
+.settings:hover{
+    background: #0E0C01;
+}
+.menu-svg{
+    height: 28px;
+    width: 28px;
+}
+.side-menu-bar{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+    border:2px solid #686136;
+    background: #0E0C01;
+    border-radius: 0px 10px 10px 0px;
+    gap: 10px;
+    left:265px;
+    cursor: pointer;
+    color: #686136;
+    font-weight: 900;
+    font-size: 52px;
+    
+
+.side-bar-svg{
+height: 90%;
+width: 90%;
+}
+}
+.side-menu-bar:hover{
+    color: #D2BD00;
+}
+@keyframes slideIn {
+    from {
+        left: 265px; /* Starting position */
+    }
+    to {
+        left: 0; /* Ending position */
+    }
+}
+
+@keyframes slideOut {
+    from {
+        left: 0; /* Starting position */
+    }
+    to {
+        left: 265px; /* Ending position */
+    }
+}
+
+.show-sidebar {
+    animation: slideIn 0.5s forwards;
+}
+
+.hide-sidebar {
+    animation: slideOut 0.8s forwards;
+}
+.not-found-address{
+    position: fixed;
+    background: #0E0C01;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+}
+.switch-modal{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    top:0%;
+    background: #1d1c14bc;
+    z-index: 1;
+}
+.switch-cont{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    gap: 10px;
+    height: auto;
+    padding: 10px;
+    background: #0E0C01;
+    border: 2px solid #D2BD00;
+    border-radius: 20px;
+
+    button{
+        width: 90%;
+        padding: 5px;
+        border: none;
+        background: #D2BD00;
+        color: #0E0C01;
+        border-radius: 20px;
+        font-size: 20px;
+        cursor: pointer;
+        font-weight: 900;
+
+    }
+    button:hover{
+        background: #0E0C01;
+        border: 2px solid #D2BD00;
+        color: #D2BD00;
+    }
+    .back-btn{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
+        color: #D2BD00;
+        border-radius: 100%;
+        border:2px solid #D2BD00;
+        cursor: pointer;
+
+    }
+
+
+}
+/********************************** 700px *******************************/
+@media (max-width:700px) {
+    .sbody{
+        display: none;
+    }
+    .side-menu-bar{
+        display: none;
+    }
+    .profile-dropdown{
+        top: 100%;
+        height: 20vh;
+        z-index: 1;
+    }
+}
+

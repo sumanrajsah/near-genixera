@@ -1,0 +1,16 @@
+.body-g{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    overflow-y: scroll;
+    scrollbar-color: #D2BD00 transparent; 
+    h2{
+        color: #D2BD00;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}

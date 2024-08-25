@@ -1,0 +1,129 @@
+body{
+    scrollbar-color: #D2BD00 transparent; 
+}
+.body{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+   
+}
+.left{
+    position: relative;
+    display: flex;
+    right:5%;
+    /* background: red; */
+}
+.left-logo{
+    height: 500px;
+    width:500px;
+}
+.right{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    left: 5%;
+    gap:20px;
+    h1,h4{
+        color: white;
+    }
+    
+}
+.login-button{
+    background-color: #D2BD00;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 300px;
+    color:#0E0C01;
+    font-weight: 900;
+    font-size: 16px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+}
+.login-button:hover{
+    transform: scale(1.05);
+    background: #0E0C01;
+    color: #D2BD00;
+    border: 2px solid #D2BD00;
+}
+.hr{
+    width: 350px;
+    background: white;
+
+}
+.login-m{
+    position: absolute;
+    background: #D2BD00;
+    color: #0E0C01;
+    bottom:10%;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 1;
+}
+.not-found{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    h1{
+        color: #D2BD00;
+    }
+}
+.nf-logo{
+    height: 300px;
+    width: auto;
+}
+
+/********************************** 1024px  *********************************/
+@media (max-width:1024px) {
+    .left-logo{
+        height: 250px;
+        width:250px;
+    }
+}
+/********************************** 768px  *********************************/
+@media (max-width:770px) {
+
+    .body{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .left{
+        right: 0%;
+    }
+    .right{
+        top:10%;
+        left: 0%;
+    }
+    .left-logo{
+        height: 200px;
+        width:200px;
+    }
+}
+/********************************** 500px  *********************************/
+@media (max-width:500px) {
+    .body{
+        justify-content: flex-start;
+
+    }
+    .left{
+        top:10%;
+    }
+    .right{
+        top:15%;
+    }
+.login-button{
+    width: 200px;
+}
+.hr{
+    width: 90vw;
+}
+}

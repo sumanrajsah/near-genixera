@@ -1,0 +1,135 @@
+.lbody{
+    position: fixed;
+    display: flex;
+    background: #0E0C01;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    bottom: 0%;
+    height: 60px;
+    padding: 10px;
+    border-top: 1px solid #D2BD00;
+    border-radius: 10px 10px 0px 0px;
+}
+.lmenu{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+}
+.lmenu-button{
+    position: relative;
+    border: none;
+    display: flex;
+    background: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    width:90%;
+    border-radius: 50px;
+    height: 40px ;
+    color: #686136;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    gap:5px;
+
+    svg{
+        height: 28px;
+        width: 28px;
+        fill: #D2BD00;
+    }
+}
+.lmenu-button:hover{
+    color: #D2BD00;
+}
+.lmore-button{
+    position: relative;
+    border: none;
+    display: flex;
+    background: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    width:90%;
+    border-radius: 50px;
+    height: 40px ;
+    color: #686136;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    gap:5px;
+
+    svg{
+        height: 36px;
+        width: 36px;
+        fill: #D2BD00;
+        transform: rotate(90deg);
+    }
+}
+.lmore-button:hover{
+    color: #D2BD00;
+}
+.lactiveButton{
+
+    .menu-button{
+        color: #D2BD00;
+    }
+}
+.lcreate-button{
+    position: relative;
+    text-align: center;
+    background: #0E0C01;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    font-weight: 900;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    border: 3px solid #D2BD00;
+
+    svg{
+        height: 36px;
+        fill: #D2BD00;
+    }
+}
+.lsidebar{
+    position: fixed;
+    background: #0E0C01;
+    top:0%;
+    height: 100vh;
+    width: 250px;
+    transition: left 0.5s ease-in-out;
+    left:0%;
+}
+.lprofile-cont{
+    position: absolute;
+    top:2%;
+    width: 100%;
+}
+/********************************** 700px *******************************/
+@media (min-width:700px) {
+    .lbody{
+        display: none;
+    }
+    .lsidebar{
+        display: none;
+    }
+}
+/********************************** 350px *******************************/
+@media (max-width:350px) {
+.lmenu{
+    gap:0px;
+}
+}
+

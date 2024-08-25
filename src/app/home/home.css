@@ -1,0 +1,91 @@
+/* body{
+    scrollbar-color: #D2BD00 transparent; 
+} */
+.body-h{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: scroll;
+    scrollbar-color: #D2BD00 transparent; 
+}
+.top{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    top:0%;
+    height: 120px;
+    width: 700px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+.top-logo{
+    position: absolute;
+    top: 1%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.top-cont{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background: #1D1C14;
+    height: 50px;
+    width: 600px;
+    border: 2px solid #4d4828;
+    border-radius: 10px;
+    bottom: 5%;
+
+    button{
+        background: transparent;
+        border: none;
+        margin: 10px;
+        border-radius: 10px;
+        padding: 5px;
+        height: 90%;
+        width: 45%;
+        cursor: pointer;
+        color: #D2BD00;
+        font-weight: 900;
+    }
+    button:hover{
+        background: #4d4828;
+    }
+}
+.top-button1{
+    position: absolute;
+left:0%;
+}
+.top-button2{
+    position: absolute;
+right:0%;
+}
+
+
+/************************** 550px **************************/
+@media (max-width:600px) {
+    .top{
+        position: absolute;
+        width: 99vw;
+    }
+    .top-cont{
+        width: 95vw;
+    }
+    .top-button1{
+        position: relative;
+        left:0%;
+    }
+    .top-button2{
+        position: relative;
+        right: 0%;
+    }
+}

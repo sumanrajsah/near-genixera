@@ -1,0 +1,209 @@
+.body-s{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+   height:100vh;
+   width: 100%;
+}
+.right-signup{
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    left: 5%;
+    gap:20px;
+    
+}
+.left-signup{
+    position: relative;
+    display: flex;
+    right:5%;
+    /* background: red; */
+}
+.left-signup-logo{
+    height: 500px;
+    width:500px;
+}
+.form-cont{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 500px;
+}
+.form-data{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+    color: #D2BD00;
+    width: 400px;
+}
+.form-input{
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border:2px solid #D2BD00;
+    background: transparent;
+    color: #D2BD00;
+    outline: none;
+    
+}
+.form-submit{
+    background:#D2BD00;
+    padding: 5px;
+    color: #0E0C01;
+    font-weight: 900;
+    font-size: 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 400px;
+}
+.form-submit:hover{
+    transform: scale(1.05);
+}
+.disabled{
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+.login-button-s{
+    background-color: #D2BD00;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color:black;
+    width: 300px;
+    font-weight: 900;
+    font-size: 16px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+}
+.login-button-s:hover{
+    transform: scale(1.05);
+}
+.back-cont{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    top:5%;
+    left:10%;
+gap: 10px;
+    font-weight: 900;
+}
+.back-button{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: transparent;
+    border: 2px solid #D2BD00;
+    height: 50px;
+    font-size: 28px;
+    color: #D2BD00;
+    width: 50px;
+    border-radius: 100%;
+    cursor: pointer;
+
+}
+.back-button:hover{
+    transform: scale(1.1);
+    color: #0E0C01;
+    background: #D2BD00;
+    border: none;
+    svg{
+        fill: #0E0C01;
+    }
+
+}
+.hr{
+    width: 350px;
+    background: white;
+
+}
+.alert-m{
+    color: #FF2323;
+}
+
+.redirect-m{
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    left: 5%;
+    gap:20px;
+    font-size: 24px;
+}
+.signup-m{
+    position: relative;
+    color: #D2BD00;
+
+    z-index: 1;
+}
+
+/********************************** 1024px  *********************************/
+@media (max-width:1024px) {
+    .left-signup-logo{
+        height: 300px;
+        width:300px;
+    }
+}
+/********************************** 768px  *********************************/
+@media (max-width:800px) {
+.body-s{
+    flex-direction: column;
+    gap:20px;
+}
+.left-signup{
+    right: 0%;
+}
+.right-signup{
+    top:5%;
+    left: 0%;
+}
+.redirect-m{
+    top:10%;
+    left: 0;
+}
+}
+
+/********************************** 500px  *********************************/
+@media (max-width:500px) {
+    .body-s{
+        gap: 5px;
+    }
+    .right-signup{
+        gap: 5px;
+    }
+    .left-signup-logo{
+        height: 100px;
+        width:100px;
+    }
+.login-button-s{
+    width: 90vw;
+}
+.form-submit{
+    width: 90vw;
+}
+.form-data{
+    width: 90vw;
+}
+.form-input{
+    width: 100%;
+}
+.hr{
+    width: 90vw;
+}
+}
