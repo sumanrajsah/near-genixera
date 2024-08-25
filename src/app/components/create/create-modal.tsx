@@ -300,7 +300,13 @@ export default function CreateModal() {
           console.log('Response:', response.data.message);
          
           if (response.data.success) {
-          const hash= await MintNft(response.data.postinfo.insertedId,response.data.uri);
+          
+          const hash =  await writeContractAsync({
+            address: '0x6bE544f3903EebBD8c0da61fD1081D3E22B383a3',
+            abi,
+            functionName: 'safeMint',
+            args: ['0xd9214679A04cFDA120EFA769249D676fF0DB5501',BigInt(`${response.data.postinfo.insertedId}`),`${response.data.uri}`],
+          })
           if(hash){
             const data={id:response.data.postinfo.insertedId,chain_id:account.chainId,tx_hash:hash}
             const r = await axios.post('api/user/doPost/nft',data)
