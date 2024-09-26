@@ -21,6 +21,7 @@ import VideoFetcher from "../mediafetcher";
 import MediaFetcher from "../mediafetcher";
 import { verifiedFetch } from "@helia/verified-fetch";
 import { useAccount } from "wagmi";
+import { throttle } from "lodash";
 
 
 interface PostInfo{
@@ -146,7 +147,7 @@ export default function PostBox({ post }: { post: PostInfo }) {
   }, [post.content_url,post.media_url,post])
 
   //like function
-  const actionPost = async (action: string) => {
+  const actionPost = throttle(async  (action: string) => {
 
     console.log(isLiked)
     let data;
@@ -190,7 +191,7 @@ export default function PostBox({ post }: { post: PostInfo }) {
     catch (error) {
       console.log(error);
     }
-  }
+  },2000)
   const displayText = formatTime(new Date(post.time as string | number));
 
   // console.log(displayText);

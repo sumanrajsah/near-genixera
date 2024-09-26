@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 20px;
+    padding-top: 5px;
     gap: 5px;
     font-family: 'Poppins', sans-serif;
 }
@@ -287,12 +288,12 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    top: 5px;
+    top: 20px;
     gap: 5px;
     cursor: pointer;
-    height: 40px;
+    height: 20px;
     width: 40px;
-    border-radius: 100%;
+    border-radius: 10px;
 
     /* background: red; */
     div {
@@ -514,12 +515,12 @@
 /****************************** 420px ******************************/
 @media (max-width:420px) {
     .post-box-cont {
-        width: 95vw;
+        width: 99%;
         padding-bottom: 5px;
     }
 
     .posts-box {
-        width: 95vw;
+        width: 100%;
         padding-top: 20px;
         padding-bottom: 20px;
         border-radius: 15px;
@@ -541,11 +542,11 @@
 /****************************** 350px ******************************/
 @media (max-width:350px) {
     .post-box-cont {
-        width: 95vw;
+        width: 99%;
     }
 
     .posts-box {
-        width: 95vw;
+        width: 100%;
         padding-top: 10px;
         padding-bottom: 10px;
     }

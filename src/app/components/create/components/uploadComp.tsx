@@ -16,6 +16,7 @@ export const UploadComponents: React.FC<UploadComponentsProps> = ({ onImageUploa
 
   const handleImageChange = (event:any) => {
     const files = event.target.files;
+    console.log(files)
     onImageUpload(files);
   };
 
