@@ -8,6 +8,8 @@ import { metaData, Posts } from '@/app/components/interface';
 import { Readable } from 'stream';
 import {create} from 'kubo-rpc-client'
 import { unixfs } from '@helia/unixfs'
+import { FilebaseClient } from '@filebase/client'
+
 
 
 
@@ -33,6 +35,7 @@ export async function POST(req: NextRequest) {
   let h, i;
   try {
     // Connect the client to the server	(optional starting in v4.7)
+    const filebaseClient = new FilebaseClient({ token: process.env.NEXT_PUBLIC_FILEBASE_API })
 
     const ipfs = create('/ip4/152.228.215.212/tcp/5001')
     const ipfs2 = create('/ip4/152.228.215.212/tcp/9095')
@@ -80,11 +83,11 @@ export async function POST(req: NextRequest) {
         });
       //  const cid = await fs.addBytes(encoder.encode(fileContent))
       //  console.log(cid)
-        const resData= await ipfs.add(file,{pin:true})
-        const cid = resData.cid;
-        // await ipfs2.pin.add(resData.cid)
-         await ipfs2.pin.add(cid)
-         await ipfs.pin.add(cid)
+        // const resData= await ipfs.add(file,{pin:true})
+        const cid = await filebaseClient.storeBlob(file)
+        // // await ipfs2.pin.add(resData.cid)
+        //  await ipfs2.pin.add(cid)
+        //  await ipfs.pin.add(cid)
         
         
         const query: Posts = { _id: post_ID, content_url: `https://ipfs.io/ipfs/${cid}`, media_url: '', time: post_time, post_type: `${postData.post_type}`, on_chain: false, author_address: `${postData.author}`, author_username: uwa.profile.username, tags: postData.post_tags, parent_post:'',like_list: [], reply_list: [], repost_list: [], view: [],visibility:true };
@@ -135,7 +138,7 @@ export async function POST(req: NextRequest) {
       //  const mediaCid = await fs.addByteStream(readableStreamForFile)
       //  console.log(mediaCid)
         const MediaData= await ipfs.add(readableStreamForFile,{pin:true})
-        const mediaCid=MediaData.cid;
+        const mediaCid=await filebaseClient.storeBlob(readableStreamForFile);
         // await ipfs2.pin.add(resData.cid)
          await ipfs2.pin.add(mediaCid)
          await ipfs.pin.add(mediaCid)

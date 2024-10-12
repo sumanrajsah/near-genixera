@@ -127,8 +127,9 @@ export default function ParentBox({ post }: { post: PostInfo }) {
     if(post && post.content_url) {
     const ipfsUrl =post.content_url
     try{
-    const response = await verifiedFetch(`ipfs://${ipfsUrl.split('/')[4]}`);
-    const c = await response.json()
+    // const response = await verifiedFetch(`ipfs://${ipfsUrl.split('/')[4]}`);
+    const response = await axios.get(`https://ipfs.filebase.io/ipfs/${ipfsUrl.split('/')[4]}`)
+    const c = await response.data.json();
     setContent(truncateString(c.content, 200));
           setIsContentLong(c.content.length > 200);
           setLessContent(truncateString(c.content, 200));

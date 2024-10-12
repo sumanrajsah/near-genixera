@@ -18,6 +18,7 @@ import { UserContext } from "@/app/userContext";
 import { AccountSettingIcon, BlockIcon } from "../svg";
 import { useChainModal } from "@rainbow-me/rainbowkit";
 import MediaFetcher from "../mediafetcher";
+import { useAppKit } from '@reown/appkit/react';
 
 
 export default function ProfileBar() {
@@ -37,6 +38,7 @@ export default function ProfileBar() {
   };
 
   const { chains, switchChain } = useSwitchChain()
+  const { open, close } = useAppKit()
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -78,7 +80,7 @@ export default function ProfileBar() {
       </div>
       {showDropdown && <div className="profile-dropdown" onClick={(e) => e.stopPropagation()}>
         {/* <p className="settings">Account Setting</p> */}
-        <button className="logout-button" onClick={openChainModal}> <BlockIcon/> Switch Chain</button>
+        <button className="logout-button" onClick={(e)=>open({view:'Networks'})}> <BlockIcon/> Switch Chain</button>
         <button className="logout-button" > <AccountSettingIcon/> Account Setting</button>
         <LogoutButton onLogout={handleLogout} />
         <h3 className="logout-m" hidden={!logoutMessage}>{logoutMessage}</h3>

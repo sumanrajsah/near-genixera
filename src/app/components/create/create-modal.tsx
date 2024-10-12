@@ -95,7 +95,6 @@ export default function CreateModal() {
       reader.readAsDataURL(file);
     }
   };
-  console.log(image)
 
   // Function to handle gif file change
   const handleGifChange = (files: FileList | null) => {

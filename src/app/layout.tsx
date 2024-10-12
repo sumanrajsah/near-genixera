@@ -82,23 +82,25 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookies = headers().get('cookie')
+
 try{
 }catch(e){}
   return (
     <html lang="en">
       <body >
-        <Wagmi >
+        {/* <Wagmi >
           <RainbowKitProvider modalSize="compact" theme={myCustomTheme}>
             <UserProvider>
               {children}
             </UserProvider>
           </RainbowKitProvider>
-        </Wagmi>
-        {/* <Web3ModalProvider>
+        </Wagmi> */}
+        <Web3ModalProvider cookies={cookies}>
         <UserProvider>
               {children}
             </UserProvider>
-        </Web3ModalProvider> */}
+        </Web3ModalProvider>
       </body>
     </html>
   );

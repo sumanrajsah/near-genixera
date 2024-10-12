@@ -273,7 +273,7 @@ console.log(error);
             placeholder="username"
           />
           {username&&(username.length<=3)&&<p>At least 3 characters</p>}
-           {checkUser&&<>{(checkUser==='Available'?<p style={{color:"green",fontWeight:900}}>&#10004;{checkUser}</p>:<p style={{color:"red"}}>&#10008; Not Available</p>)}</>}
+           {checkUser&&<>{(checkUser==='Available'?<p style={{color:"green",fontWeight:900}}>&#10004;{checkUser}</p>:<p style={{color:"red"}}>&#10008; Not Available Username</p>)}</>}
           <input
           className="form-input"
             type="email"
@@ -284,7 +284,7 @@ console.log(error);
             placeholder="Email"
           />
           
-            {checkEmail&&<>{(checkEmail==='Available'?<p style={{color:"green",fontWeight:900}}>&#10004;{checkEmail}</p>:<p style={{color:"red"}}>&#10008; Not Available</p>)}</>}
+            {checkEmail&&<>{(checkEmail==='Available'?<p style={{color:"green",fontWeight:900}}>&#10004;{checkEmail}</p>:<p style={{color:"red"}}>&#10008; Not Available Email</p>)}</>}
         </div>
         <br/>
         <div>
