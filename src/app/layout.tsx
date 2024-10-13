@@ -11,6 +11,8 @@ import { UserProvider } from "./userContext";
 import Web3ModalProvider from "./wagmi2";
 import initializeHelia from "./lib/helia";
 import GoogleAdsense from "./GA";
+import Head from "next/head";
+import Script from "next/script";
 
 const myCustomTheme: Theme = {
   blurs: {
@@ -89,6 +91,15 @@ try{
 }catch(e){}
   return (
     <html lang="en">
+      <Head>
+      <Script
+      async
+      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-${process.env.NEXT_PUBLIC_GA_ID}`}
+      crossOrigin="anonymous"
+      strategy="afterInteractive"
+    />
+        <GoogleAdsense pId={`${process.env.NEXT_PUBLIC_GA_ID}`}/>
+      </Head>
       <body >
         {/* <Wagmi >
           <RainbowKitProvider modalSize="compact" theme={myCustomTheme}>
@@ -103,7 +114,6 @@ try{
             </UserProvider>
         </Web3ModalProvider>
       </body>
-      <GoogleAdsense pId={`${process.env.NEXT_PUBLIC_GA_ID}`}/>
     </html>
   );
 }
