@@ -15,7 +15,7 @@ const nextConfig = {
           },
           {
             protocol: 'https',
-            hostname: 'ipfs.squarexlabs.io',
+            hostname: 'ipfs.filebase.io',
             port: '',
           },
           {

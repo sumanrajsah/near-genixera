@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import "./style.css";
 import Link from "next/link";
 import TopLoader from "./components/toplpader";
-import { Audio,Oval } from 'react-loader-spinner'
+import { Audio,Oval, TailSpin } from 'react-loader-spinner'
 import { UserContext } from "./userContext";
 
 
@@ -86,7 +86,7 @@ export default function Home() {
         <Image className="left-logo" src={'/gslogo.png'} alt="gensquare" width={1000} height={1000} />
       </div>
       {account.isReconnecting  ?
-      <div className="right"><Oval
+      <div className="right"><TailSpin
       visible={true}
       height="100"
       width="100"
@@ -94,8 +94,9 @@ export default function Home() {
       ariaLabel="oval-loading"
       wrapperStyle={{}}
       wrapperClass=""
-      strokeWidth={10}
-      /></div>
+      radius={2}
+      strokeWidth={1}
+      />Wait...</div>
       :<div className="right">
         <h1>Enter to New Era</h1>
         {!(account.isConnected) ? <Connect /> : <Connect />}

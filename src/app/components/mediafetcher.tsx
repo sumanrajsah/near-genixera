@@ -1,21 +1,18 @@
-"use client"
-import { verifiedFetch } from '@helia/verified-fetch';
+"use client";
 import { useEffect, useMemo } from 'react';
+import axios from 'axios';
 
-export default function MediaFetcher({ setMediaBlob, cid }:any) {
-  
+export default function MediaFetcher({ setMediaBlob, cid }: any) {
   const fetchVideo = useMemo(() => {
-    
     async function fetchVideoInner() {
       try {
-        const response = await verifiedFetch(`ipfs://${cid}`);
-        
-        if (!response.ok) {
-          throw new Error(`Failed to fetch video: ${response.statusText}`);
-        }
+        // Use axios to fetch the video as a blob
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_IPFS_URL}/${cid}`, {
+          responseType: 'blob', // Important for binary data
+        });
 
-        const blob = await response.blob();
-        setMediaBlob(blob); // Pass the blob up to the parent component
+        // Set the fetched blob data to the parent component
+        setMediaBlob(response.data); // In axios, the blob is in response.data
       } catch (error) {
         console.error('Error fetching video:', error);
       }
@@ -25,9 +22,9 @@ export default function MediaFetcher({ setMediaBlob, cid }:any) {
   }, [cid, setMediaBlob]);
 
   useEffect(() => {
-    if(!cid){return }
+    if (!cid) return;
     fetchVideo();
-  }, [fetchVideo,cid]);
+  }, [fetchVideo, cid]);
 
   return null; // This component doesn’t render anything
 }

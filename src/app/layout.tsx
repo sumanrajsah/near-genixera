@@ -10,6 +10,7 @@ import '@rainbow-me/rainbowkit/styles.css';
 import { UserProvider } from "./userContext";
 import Web3ModalProvider from "./wagmi2";
 import initializeHelia from "./lib/helia";
+import GoogleAdsense from "./GA";
 
 const myCustomTheme: Theme = {
   blurs: {
@@ -102,6 +103,7 @@ try{
             </UserProvider>
         </Web3ModalProvider>
       </body>
+      <GoogleAdsense pId={`${process.env.NEXT_PUBLIC_GA_ID}`}/>
     </html>
   );
 }

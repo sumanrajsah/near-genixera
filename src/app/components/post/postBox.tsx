@@ -22,6 +22,7 @@ import MediaFetcher from "../mediafetcher";
 import { verifiedFetch } from "@helia/verified-fetch";
 import { useAccount } from "wagmi";
 import { throttle } from "lodash";
+import { Oval, TailSpin } from "react-loader-spinner";
 
 
 interface PostInfo{
@@ -132,8 +133,10 @@ export default function PostBox({ post }: { post: PostInfo }) {
     if(post && post.content_url) {
     const ipfsUrl =post.content_url
     try{
-    const response = await verifiedFetch(`ipfs://${ipfsUrl.split('/')[4]}`);
-    const c = await response.json()
+    //const response = await verifiedFetch(`ipfs://${ipfsUrl.split('/')[4]}`);
+    const response = await axios.get(`https://ipfs.filebase.io/ipfs/${ipfsUrl.split('/')[4]}`)
+    console.log(response)
+    const c = await response.data
     setContent(truncateString(c.content, 200));
           setIsContentLong(c.content.length > 200);
           setLessContent(truncateString(c.content, 200));
@@ -487,12 +490,21 @@ const [MediaBlob, setMediaBlob] = useState<Blob | null>(null);
            {(post.post_type === 'video')&& <div className="view-video" onClick={(e) => e.stopPropagation()}>
             <video src={`${process.env.NEXT_PUBLIC_API_IPFS_URL}/${post.media_url.split('/')[4]}`} className="video-bg" height={1000} width={1000}  />
          
-          {MediaBlob&& <video className="video" muted  autoPlay ref={videoRef} onClick={(e)=>{e.stopPropagation();const ve= e.target as HTMLVideoElement;{(ve.muted)?(ve.muted=false):('')}}} controls preload="true" >
+          {MediaBlob? <video className="video" muted  autoPlay ref={videoRef} onClick={(e)=>{e.stopPropagation();const ve= e.target as HTMLVideoElement;{(ve.muted)?(ve.muted=false):('')}}} controls preload="true" >
               <source src={URL.createObjectURL(MediaBlob)} type="video/mp4"/>
               <source src={URL.createObjectURL(MediaBlob)} type="video/ogg"/>
               <source src={URL.createObjectURL(MediaBlob)} type="video/wmb"/>
               your browser not supported
-            </video>}
+            </video>:<div style={{zIndex:'1',width:'100%',height:'250px',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',color:'#D2BD00'}}><TailSpin
+      visible={true}
+      height="50"
+      width="50"
+      color="#D2BD00"
+      ariaLabel="oval-loading"
+      wrapperStyle={{}}
+      wrapperClass=""
+      strokeWidth={2}
+      />Loading...</div>}
             
           
            </div> }

@@ -6,8 +6,6 @@ import { cookies } from 'next/headers';
 import pinataSDK from '@pinata/sdk'
 import { metaData, Posts } from '@/app/components/interface';
 import { Readable } from 'stream';
-import {create} from 'kubo-rpc-client'
-import { unixfs } from '@helia/unixfs'
 import { FilebaseClient } from '@filebase/client'
 
 
@@ -36,9 +34,6 @@ export async function POST(req: NextRequest) {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     const filebaseClient = new FilebaseClient({ token: process.env.NEXT_PUBLIC_FILEBASE_API })
-
-    const ipfs = create('/ip4/152.228.215.212/tcp/5001')
-    const ipfs2 = create('/ip4/152.228.215.212/tcp/9095')
     // console.log(res)
     const postData = await req.json();
     //  console.log(postData)
@@ -120,28 +115,12 @@ export async function POST(req: NextRequest) {
       const readableStreamForFile = new Readable();
       readableStreamForFile.push(binaryData);
       readableStreamForFile.push(null);
-      const metaname = post_ID + '-' + Date.now();
-      const options: any = {
-        pinataMetadata: {
-          name: metaname,
-          keyvalues: {
-            customKey: 'customValue',
-            customKey2: 'customValue2'
-          }
-        },
-        pinataOptions: {
-          cidVersion: 0
-        }
-      };
-
         // const resData = await pinata.pinJSONToIPFS(PostMetaData);
       //  const mediaCid = await fs.addByteStream(readableStreamForFile)
       //  console.log(mediaCid)
-        const MediaData= await ipfs.add(readableStreamForFile,{pin:true})
-        const mediaCid=await filebaseClient.storeBlob(readableStreamForFile);
+      const mediafile = new File([binaryData],'t');
+        const mediaCid=await filebaseClient.storeBlob(mediafile);
         // await ipfs2.pin.add(resData.cid)
-         await ipfs2.pin.add(mediaCid)
-         await ipfs.pin.add(mediaCid)
       // console.log(MediaData.IpfsHash)
 
       // upload metadata of post to pinata
@@ -166,11 +145,7 @@ export async function POST(req: NextRequest) {
     const file = new File([fileContent], 'data.json', {
       type: 'application/json',
     });
-      const resData= await ipfs.add(file,{pin:true})
-      // await ipfs2.pin.add(resData.cid)
-      const cid= resData.cid;
-       await ipfs2.pin.add(cid)
-       await ipfs.pin.add(cid)
+    const cid = await filebaseClient.storeBlob(file)
 
       const query: Posts = { _id: post_ID, content_url: `https://ipfs.io/ipfs/${cid}`, author_address: `${postData.author}`, author_username: uwa.profile.username, media_url: `https://ipfs.io/ipfs/${mediaCid}`, time: post_time, post_type: `${postData.post_type}`, on_chain: false, parent_post:'', tags: postData.post_tags, like_list: [], reply_list: [], repost_list: [], view: [],visibility:true };
 

@@ -18,6 +18,7 @@ import { abi } from "../abi";
 
 
 
+
 export default function CreateModal() {
   const searchParams = useSearchParams();
   const searchTerm = searchParams.get('create');
