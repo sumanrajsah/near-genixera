@@ -23,6 +23,7 @@ import { verifiedFetch } from "@helia/verified-fetch";
 import { useAccount } from "wagmi";
 import { throttle } from "lodash";
 import { Oval, TailSpin } from "react-loader-spinner";
+import AdBanner from "../AdBanner";
 
 
 interface PostInfo{
@@ -511,7 +512,7 @@ const [MediaBlob, setMediaBlob] = useState<Blob | null>(null);
            
           {(post.post_type === 'audio') && <ReactAudioPlayer className="audio-player" src={`${process.env.NEXT_PUBLIC_API_IPFS_URL}/${post.media_url.split('/')[4]}`} controls />}
         </div>
-
+        <AdBanner/>
       </div>
           {zoomImg&&
           <div className="zoom-img-cont" onClick={(e) => setZoomImg(false)}>
