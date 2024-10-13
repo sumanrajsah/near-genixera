@@ -71,10 +71,10 @@ const myCustomTheme: Theme = {
 };
 
 export const metadata: Metadata = {
-  title: "GenX",
+  title: "GenixEra",
   description: "Future Application",
   openGraph:{
-    title:"GenX",
+    title:"GeninEra",
     description: "Future Application",
 
   }
@@ -91,15 +91,13 @@ try{
 }catch(e){}
   return (
     <html lang="en">
-      <Head>
       <Script
       async
       src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-${process.env.NEXT_PUBLIC_GA_ID}`}
       crossOrigin="anonymous"
       strategy="afterInteractive"
     />
-        <GoogleAdsense pId={`${process.env.NEXT_PUBLIC_GA_ID}`}/>
-      </Head>
+
       <body >
         {/* <Wagmi >
           <RainbowKitProvider modalSize="compact" theme={myCustomTheme}>

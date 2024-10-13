@@ -26,7 +26,7 @@ export default function Home() {
   }
   const { userData, setUserData } = userContext;
 
-  const SMessage = `Welcome to EraX! \n Click to sign in and accept that you are sign in to our platform with. \n \n This request will not trigger a blockchain transaction or cost any gas fees.\n \n wallet address: ${account.address}.`;
+  const SMessage = `Welcome to GenixEra! \n Click to sign in and accept that you are sign in to our platform with. \n \n This request will not trigger a blockchain transaction or cost any gas fees.\n \n wallet address: ${account.address}.`;
   const signMessage = async () => {
     const signature = await signMessageAsync({ message: SMessage });
     try {
@@ -83,7 +83,7 @@ export default function Home() {
     <main className="body" >
       <TopLoader />
       <div className="left">
-        <Image className="left-logo" src={'/gslogo.png'} alt="gensquare" width={1000} height={1000} />
+        <Image className="left-logo" src={'/gslogo.png'} alt="genixera" width={1000} height={1000} />
       </div>
       {account.isReconnecting  ?
       <div className="right"><TailSpin
