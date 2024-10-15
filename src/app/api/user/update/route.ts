@@ -2,11 +2,11 @@
 import { MongoClient, ServerApiVersion } from 'mongodb';
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import pinataSDK from '@pinata/sdk'
-import { Readable } from 'stream';
-import {create} from 'kubo-rpc-client'
 
-const pinata = new pinataSDK({ pinataJWTKey: process.env.NEXT_PUBLIC_PINATA_JWT });
+import { Readable } from 'stream';
+import { FilebaseClient } from '@filebase/client';
+
+
 const uri =process.env.NEXT_PUBLIC_MONGODB_URI;
 let client:MongoClient
 
@@ -33,9 +33,7 @@ async function getCookieData() {
   )
 }
 async function uploadImageToIPFS(base64Data: string): Promise<string> {
-  const ipfs = create('/ip4/152.228.215.212/tcp/5001')
-  const ipfs2 = create('/ip4/152.228.215.212/tcp/9095')
-  const res = await pinata.testAuthentication()
+  const filebaseClient = new FilebaseClient({ token: process.env.NEXT_PUBLIC_FILEBASE_API })
   const dta = base64Data.split(',')[1];
   const binaryData = Buffer.from(dta, 'base64');
 
@@ -55,9 +53,9 @@ async function uploadImageToIPFS(base64Data: string): Promise<string> {
       cidVersion: 0
     }
   };
-  const resData= await ipfs.add(readableStreamForFile,{pin:true})
-  await ipfs2.pin.add(resData.cid)
-  return `http://ipfs.io/ipfs/${resData.cid}`;
+  const mediafile = new File([binaryData],'t');
+  const cid = await filebaseClient.storeBlob(mediafile)
+  return `http://ipfs.io/ipfs/${cid}`;
 }
 
 export async function PUT(req:Request) {

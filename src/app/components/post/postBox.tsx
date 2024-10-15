@@ -136,7 +136,6 @@ export default function PostBox({ post }: { post: PostInfo }) {
     try{
     //const response = await verifiedFetch(`ipfs://${ipfsUrl.split('/')[4]}`);
     const response = await axios.get(`https://ipfs.filebase.io/ipfs/${ipfsUrl.split('/')[4]}`)
-    console.log(response)
     const c = await response.data
     setContent(truncateString(c.content, 200));
           setIsContentLong(c.content.length > 200);
@@ -432,10 +431,21 @@ setHide(true);
 getHide();
 },[userData,post])
 
-async function ShareModel(){
-console.log('share')
-}
+
 const [MediaBlob, setMediaBlob] = useState<Blob | null>(null);
+
+async function ShareModel(){
+  const shareData = {
+    title: "Genix Era",
+    text: "Create. Earn. Own.",
+    url:`${process.env.NEXT_PUBLIC_API_BASE_URL}/posts/${post._id}`,
+  };
+  try {
+    await navigator.share(shareData);
+   
+  } catch (err) {
+  }
+}
 
 
   return (
@@ -512,7 +522,6 @@ const [MediaBlob, setMediaBlob] = useState<Blob | null>(null);
            
           {(post.post_type === 'audio') && <ReactAudioPlayer className="audio-player" src={`${process.env.NEXT_PUBLIC_API_IPFS_URL}/${post.media_url.split('/')[4]}`} controls />}
         </div>
-        <AdBanner/>
       </div>
           {zoomImg&&
           <div className="zoom-img-cont" onClick={(e) => setZoomImg(false)}>

@@ -9,7 +9,7 @@ export const Verify = () => {
 
   return (
 <div className="check-h"> <div className="check-logo-cont">
-    <Image className="check-logo" src={'/gslogo.png'} alt="genixera" width={1000} height={1000} /><br/><h1>GenX</h1>
+    <Image className="check-logo" src={'/gslogo.png'} alt="genixera" width={1000} height={1000} /><br/><h1>Genix Era</h1>
   </div>
   <div className="verify-btn-cont"><Connect/></div>
   </div>

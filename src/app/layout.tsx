@@ -71,11 +71,11 @@ const myCustomTheme: Theme = {
 };
 
 export const metadata: Metadata = {
-  title: "GenixEra",
-  description: "Future Application",
+  title: "Genix Era",
+  description: "Create. Earn. Own.",
   openGraph:{
-    title:"GeninEra",
-    description: "Future Application",
+    title:"Genix Era",
+    description: "Create. Earn. Own.",
 
   }
 };

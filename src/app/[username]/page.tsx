@@ -280,11 +280,11 @@ if(!userDataAvailable) return<Loader/>;
 
         {showBg && message && <div className="show-bg-img-cont" onClick={(e) => (setshowBg(false))}>
           <button className="close-bt" onClick={(e) => (setshowBg(false))}><span>&times;</span> </button>
-          <Image className="show-bg-img" src={`/api/image/${backgroundImage.split('/')[4]}`} height={500} width={1500} alt="genx" hidden={!backgroundImage} onClick={(e) => e.stopPropagation()} />
+          <Image className="show-bg-img" src={`${process.env.NEXT_PUBLIC_API_IPFS_URL}/${backgroundImage.split('/')[4]}`} height={500} width={1500} alt="genx" hidden={!backgroundImage} onClick={(e) => e.stopPropagation()} />
         </div>}
         {showPImg && message && <div className="show-p-img-cont" onClick={(e) => (setshowPImg(false))}>
           <button className="close-bt" onClick={(e) => (setshowPImg(false))}><span>&times;</span> </button>
-          <Image className="show-p-img" src={`/api/image/${profileImage.split('/')[4]}`} height={500} width={500} alt="genx" hidden={!backgroundImage} onClick={(e) => e.stopPropagation()} />
+          <Image className="show-p-img" src={`${process.env.NEXT_PUBLIC_API_IPFS_URL}/${profileImage.split('/')[4]}`} height={500} width={500} alt="genx" hidden={!backgroundImage} onClick={(e) => e.stopPropagation()} />
           <h1>{username}</h1>
         </div>}
 
@@ -308,7 +308,7 @@ if(!userDataAvailable) return<Loader/>;
               <p className="user-bio">{Bio}</p>
               <p className="website-link" onClick={() => { window.open(`${message?.website}`, '_blank') }}>{message?.website}</p>
               <br />
-              <p className="location"><span>Location: </span>{message?.location}</p>
+              {message?.location&&<p className="location"><span>Location: </span>{message?.location}</p>}
               {!(account.address == wallet) && <div className="follow-button" onClick={follow}>{isFollow ? 'Unfollow' : 'Follow'}</div>}
               {(account.address == wallet) && <Link href={'?editprofile=true'} className="follow-button">Edit Profile</Link>}
             </div>
@@ -316,7 +316,6 @@ if(!userDataAvailable) return<Loader/>;
               <Link href={'?followers=true'}> <p> <span>{followers}</span> Followers</p></Link>
               <Link href={'?following=true'}>   <p> <span>{following}</span> Following</p></Link>
             </div>
-
           </div>
           <div className="profile-bar-cont">
             <p onClick={() => handleTabClick('Posts')}  >Posts</p>

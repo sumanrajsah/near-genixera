@@ -71,7 +71,7 @@ export default function Home() {
   
   return (
     <Suspense>
-      <title>Home / GenX</title>
+      <title>Home / Genix Era</title>
       <main className="body-h"  onClick={(e) => e.stopPropagation()}>
         <TopLoader/>
          <PostContainer load={load} tab={activeTab}/>
