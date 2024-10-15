@@ -11,7 +11,7 @@ import PostProfile from "./postProfile";
 import '@fontsource/poppins';
 import { useRouter } from "next/navigation";
 import { Posts, usersProfile } from "../interface";
-import { Comment, EthIcon, FollowIcon, HideIcon, Liked, Likes, LinkIcon, MediaIcon, MetaDataIcon, ReportIcon, Repost, Share, ViewIcon } from "../svg";
+import { Comment, EthIcon, FollowIcon, HideIcon, Liked, Likes, LinkIcon, MediaIcon, MetaDataIcon, ReportIcon, Repost, ShareIcon, ViewIcon } from "../svg";
 import { findUsernameInLikeList, findUsernameInRepostList, formatTime } from "./postFunction";
 import { UserContext } from "@/app/userContext";
 import TopLoader from "../toplpader";
@@ -24,6 +24,7 @@ import { useAccount } from "wagmi";
 import { throttle } from "lodash";
 import { Oval, TailSpin } from "react-loader-spinner";
 import AdBanner from "../AdBanner";
+import { Share } from '@capacitor/share';
 
 
 interface PostInfo{
@@ -441,7 +442,7 @@ async function ShareModel(){
     url:`${process.env.NEXT_PUBLIC_API_BASE_URL}/posts/${post._id}`,
   };
   try {
-    await navigator.share(shareData);
+    await Share.share(shareData);
    
   } catch (err) {
   }
@@ -559,7 +560,7 @@ async function ShareModel(){
         </div>
         <div className="action-bar-svg" title="share" onClick={ShareModel}>
           <div className="share-svg">
-            <Share />
+            <ShareIcon />
           </div>
         </div>
       </div>
