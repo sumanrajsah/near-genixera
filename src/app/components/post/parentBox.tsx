@@ -11,7 +11,7 @@ import PostProfile from "./postProfile";
 import '@fontsource/poppins';
 import { useRouter } from "next/navigation";
 import { Posts, usersProfile } from "../interface";
-import { Comment, FollowIcon, HideIcon, Liked, Likes, LinkIcon, MediaIcon, MetaDataIcon, ReportIcon, Repost, Share, ViewIcon } from "../svg";
+import { Comment, FollowIcon, HideIcon, Liked, Likes, LinkIcon, MediaIcon, MetaDataIcon, ReportIcon, Repost,  ShareIcon, ViewIcon } from "../svg";
 import { findUsernameInLikeList, findUsernameInRepostList, formatTime } from "./postFunction";
 import { UserContext } from "@/app/userContext";
 import TopLoader from "../toplpader";
@@ -525,7 +525,7 @@ const [MediaBlob, setMediaBlob] = useState<Blob | null>(null);
         </div>
         <div className="action-bar-svg" title="share">
           <div className="share-svg">
-            <Share />
+            <ShareIcon />
           </div>
         </div>
       </div>
