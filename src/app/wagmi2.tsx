@@ -33,7 +33,7 @@ const modal = createAppKit({
   adapters: [wagmiAdapter],
   projectId,
   networks: [auroraTestnet,polygonAmoy,sepolia,mainnet],
-  defaultNetwork: mainnet,
+  defaultNetwork: sepolia,
   metadata: metadata,
   features: {
     analytics: true, // Optional - defaults to your Cloud configuration
