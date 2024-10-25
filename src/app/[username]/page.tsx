@@ -110,7 +110,7 @@ export default function Profile({ params }: any) {
 
         var scrollTop = mainElement.scrollTop;
         if (
-          scrollTop + mainElement.clientHeight + 5 >= mainElement.scrollHeight
+          mainElement.scrollTop + mainElement.clientHeight >= mainElement.scrollHeight - 40
         ) {
 
           setLoader(true);

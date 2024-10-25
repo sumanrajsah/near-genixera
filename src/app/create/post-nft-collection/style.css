@@ -1,0 +1,132 @@
+.post-nft-col-cont{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 3vh;
+    gap: 10px;
+}
+.post-nft-col-box{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    height: 100%;
+    gap:20px ;
+    padding: 20px;
+    border: 2px solid #4d4828;
+    border-radius: 20px;
+}
+.uploadContainer {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 250px;
+    border: 2px dashed #4d4828;
+    border-radius: 10px;
+    width: 100%;
+    cursor: pointer;
+  }
+  
+  
+  .imagePreview {
+    width: 200px;
+    height: 200px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    margin-top: 20px;
+  }
+  
+  .imagePreview img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .imagePreview p {
+    color: #aaa;
+    font-size: 14px;
+  }
+  .input-cont{
+position: relative;
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 10px;
+text-align: left;
+
+label{
+    color: #D2BD00;
+    font-size: 18px;
+}
+input{
+    background: #1D1C14;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 24px;
+    border: none;
+    outline: none;
+    color: white;
+}
+  }
+  .chain-select-cont{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+
+    label{
+        font-size: 24px;
+        color: #D2BD00;
+    }
+  }
+  .chain-box{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    width: 200px;
+    .chain-logo{
+        height: 50px;
+        width: 50px;
+    }
+    
+}
+.chain-box:hover{
+      border: 2px solid #D2BD00;
+      transform: scale(1.1);
+    
+  }
+  .continue-button{
+    background: #D2BD00;
+    color: #1D1C14;
+    border: none;
+    border: 2px solid #1D1C14;
+    padding: 15px;
+    font-size: 24px;
+    border-radius: 20px;
+}
+.continue-button:hover{
+    border: 2px solid #D2BD00;
+    color: #D2BD00;
+    background: #1D1C14;
+    cursor: pointer;
+    transform: scale(1.1);
+    
+  }
+  

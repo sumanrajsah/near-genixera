@@ -63,21 +63,23 @@
     gap: 20px;
     width: 300px;
 
-    button{
-        border: 2px solid #D2BD00;
-        background: none;
-        border-radius: 15px;
-        cursor: pointer;
-        color: white;
-        width: 90%;
-        padding: 5px;
-        font-size: 20px;
-        font-weight: 900;
-    }
-    button:hover{
-        background: #d2bd0034;
-        border: none;
-    }
+
+}
+.create-post-nft{
+    border: 2px solid #D2BD00;
+    background: none;
+    border-radius: 15px;
+    cursor: pointer;
+    color: white;
+    width: 90%;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+}
+.create-post-nft:hover{
+    background: #d2bd0034;
+    border: none;
 }
 .creating-post{
     position: relative;
@@ -318,6 +320,33 @@
         color: #D2BD00;
     }
 }
+.select-contract-cont {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:10px;
+  }
+  
+  .select-contract-cont:hover .dropdown-menu {
+    display: block;
+  }
+  
+  .select-contract-box {
+    padding: 12px 16px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid #D2BD00;
+    border-radius: 20px;
+    font-size: 20px;
+  }
+  
+  .select-contract-box:hover {
+    background-color: #686136;
+    border: 2px solid #686136;
+    color: #D2BD00;
+  }
+  
   
 /************************** 650px *******************************/
 

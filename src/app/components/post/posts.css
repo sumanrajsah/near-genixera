@@ -1,5 +1,6 @@
 .posts-body{
     position: absolute;
+    text-align: center;
     /* background: red; */
     width: 600px;
     top:17%;
@@ -8,6 +9,7 @@
     position: absolute;
     display: flex;
     flex-wrap: wrap;
+    text-align: left;
     justify-content:center;
     align-items: center;
     height: 90vh;

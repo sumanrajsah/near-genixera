@@ -1,12 +1,14 @@
 import { cookieStorage, createStorage, http } from '@wagmi/core'
 import { WagmiAdapter } from '@reown/appkit-adapter-wagmi'
-import { mainnet, arbitrum, polygon, polygonMumbai, sepolia } from '@reown/appkit/networks'
+import {  polygonAmoy, sepolia, auroraTestnet } from '@reown/appkit/networks'
 
 // Get projectId from https://cloud.walletconnect.com
 export const projectId = process.env.NEXT_PUBLIC_ID
 
 if (!projectId) throw new Error('Project ID is not defined')
-  export const networks = [mainnet, arbitrum,polygon,polygonMumbai,sepolia]
+ 
+  
+  export const networks = [polygonAmoy,sepolia,auroraTestnet]
 
 //Set up the Wagmi Adapter (Config)
 export const wagmiAdapter = new WagmiAdapter({

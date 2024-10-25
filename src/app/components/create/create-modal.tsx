@@ -15,9 +15,33 @@ import { Audio, Oval } from 'react-loader-spinner'
 import { usersProfile } from "../interface";
 import { UserContext } from "@/app/userContext";
 import { abi } from "../abi";
+import { switchChain } from "@wagmi/core";
+import { config } from "@/app/config2";
+import { auroraTestnet, polygonAmoy, sepolia } from "viem/chains";
 
 
+type postNftCol={
+  contract_name:string;
+  image_url:string;
+  chain_id:string;
+  contract_symbol:string;
+  contract_address:string;
+  owner:string;
+  tx_hash:string;
+}
 
+const GXPNETH={
+  contract_address:'',
+  chain_id:11155111
+}
+const GXPNPOL={
+  contract_address:'',
+  chain_id:80002
+}
+const GXPNAURORA={
+  contract_address:'',
+  chain_id:131316555
+}
 
 export default function CreateModal() {
   const searchParams = useSearchParams();
@@ -35,6 +59,10 @@ export default function CreateModal() {
   const [video, setVideo] = useState<string | ArrayBuffer | null>(null);
   const [image, setImage] = useState<string | ArrayBuffer | null>(null);
   const [warning, setWarning] = useState('');
+  const [postNftContract,setPostNftContract]=useState<postNftCol[]>([])
+  const [contractAddress,setContractAddress]=useState<any>()
+  const [chainId,setChainId]=useState<any>();
+  const [isContractSelected,setContract]=useState(false)
 
   const userContext = useContext(UserContext);
   if (!userContext) {
@@ -168,10 +196,10 @@ export default function CreateModal() {
 
   const [createPost, setCreatePost] = useState(false);
   const [createNftPost, setCreateNftPost] = useState(false);
-  const [createNftColelction, setNftCollection] = useState(false)
   const togglePost = () => {
     setCreatePost(false);
-    setNftCollection(false)
+    setContractAddress('');
+    setChainId(0);
     setImage(null);
     setGif(null);
     setText('');
@@ -179,9 +207,23 @@ export default function CreateModal() {
     setVideo(null);
   };
   const toggleNftPost = () => {
-    setCreatePost(!createPost);
+    setCreatePost(false);
     setCreateNftPost(true);
   };
+  useEffect(()=>{
+    async function getContract() {
+      try{
+        const response = await axios.get(`/api/post-nft-collection?id=${account.address}`);
+        if(response.data.success){
+          console.log(response.data.postsNftCol[0].post_nft_collections);
+          setPostNftContract(response.data.postsNftCol[0].post_nft_collections)
+        }
+      }catch(e){
+        console.log(e)
+      }
+    }
+    getContract();
+  },[account.address])
 
   const handlePost = async (e: any) => {
     setPosting(true);
@@ -303,13 +345,13 @@ export default function CreateModal() {
           if (response.data.success) {
           
           const hash =  await writeContractAsync({
-            address: '0xf336245Ac783C838DDfeeCEA59A77C594994ECf3',
+            address: contractAddress,
             abi,
             functionName: 'safeMint',
             args: [`0x${account.address?.slice(2)}`,BigInt(`${response.data.postinfo.insertedId}`),`${response.data.uri}`],
           })
           if(hash){
-            const data={id:response.data.postinfo.insertedId,chain_id:account.chainId,tx_hash:hash}
+            const data={id:response.data.postinfo.insertedId,chain_id:chainId,tx_hash:hash}
             const r = await axios.post('api/user/doPost/nft',data)
             if(r.data.success){
               window.location.href='/home'
@@ -337,10 +379,11 @@ export default function CreateModal() {
     <>
       {(searchTerm == 'true') && <main className="modal-body"  >
         {(posting) ? 'Creating...' : <div className="modal-cont" ref={closeModal}>
-          {createNftPost && <h4 style={{ color: 'green' }}>This Post permanently stored on chain </h4>}
+          {createNftPost && contractAddress && <h4 style={{ color: 'green' }}>This Post permanently stored on chain </h4>}
+          {createNftPost && !contractAddress && <h4 style={{ color: '#D2BD00' }}>Choose Post Collection (Contract)</h4>}
           {(!createNftPost && createPost) && <h4 style={{ color: 'green' }}>This Post stored in our database </h4>}
           {warning && <h4 style={{ color: 'red' }}>{warning}</h4>}
-          <div className="p-cont">
+          {/* <div className="p-cont">
             <div className="p-image">
               {userData?.username ? <Image height={50} width={50} src={!(userData?.image_url)?'/profile2.svg':`${process.env.NEXT_PUBLIC_API_IPFS_URL}/${(userData?.image_url).split('/')[4]}`} alt="Profile" /> : <Oval
                 visible={true}
@@ -354,11 +397,21 @@ export default function CreateModal() {
               />}
             </div>
             <h3>{userData?.username}</h3>
-          </div>
-          {!createPost && !createNftColelction && <div className="create-cont" >
-            <button className="create-post" onClick={()=>setCreatePost(true)}>Post</button>
-            <button className="create-post-nft" onClick={toggleNftPost}>P-NFT</button>
-            {/* <button className="create-post-nft" onClick={() => {setNftCollection(true)}}>P-NFT Collection</button> */}
+          </div> */}
+         {createNftPost&& !contractAddress&& <div className="select-contract-cont">
+  <div className="select-contract-box"  onClick={async()=>{setChainId(11155111);setContractAddress('');await switchChain(config,{chainId:sepolia.id})}}>Sepolia-Contract</div>
+  <div className="select-contract-box"  onClick={async()=>{setChainId(80002);setContractAddress('');await switchChain(config,{chainId:polygonAmoy.id})}}>Polygon Amoy-Contract</div>
+  <div className="select-contract-box"  onClick={async()=>{setChainId(131316555);setContractAddress('');await switchChain(config,{chainId:auroraTestnet.id})}}>Aurora Testnet-Contract</div>
+    {postNftContract.map((nftContract:postNftCol,index)=>(
+  <div key={index} className="select-contract-box"  onClick={async ()=>{setChainId(nftContract.chain_id);setContractAddress(nftContract.contract_address);await switchChain(config,{chainId:Number(nftContract.chain_id)})}}>{nftContract.contract_name} ({nftContract.contract_symbol})-{nftContract.contract_address?.slice(0,5)}...{nftContract.contract_address?.slice(-5)}</div>
+    ))}
+</div>}
+
+          {!createPost && !createNftPost && <div className="create-cont" >
+            <div className="create-post-nft" onClick={()=>setCreatePost(true)}>Post</div>
+            <div className="create-post-nft" onClick={toggleNftPost}>P-NFT</div>
+            <Link href={'/create/post-nft-collection'} className="create-post-nft"  >
+           P-NFT Collection</Link>
           </div>}
 
           {createPost &&
@@ -390,6 +443,49 @@ export default function CreateModal() {
               <div className="upload-buttons">
                 <UploadComponents onImageUpload={handleFileChange} onAudioUpload={handleAudioChange} onGifUpload={handleGifChange} onVideoUpload={handleVideoChange} notUpload={posting} />
                 {!createNftPost && (text || image || gif || video || audio) && <button className="post-button" id="post-b" onClick={handlePost} disabled={posting}>{(posting) ?
+                  <Oval
+                    visible={true}
+                    height="20"
+                    width="20"
+                    color="#D2BD00"
+                    ariaLabel="oval-loading"
+                    wrapperStyle={{}}
+                    wrapperClass=""
+                    strokeWidth={5}
+                  />
+                  : 'Post'}</button>}
+                {createNftPost && (text || image || gif || video || audio) &&contractAddress&& <button className="post-button" onClick={mint } disabled={posting}>{(posting) ? 'Loading...' : 'Create'}</button>}
+              </div>
+            </div>}
+          {createNftPost && contractAddress &&
+            <div className="creating-post" >
+              <div className="input-field"> <textarea disabled={posting} id="feed" className={`customInput ${isFocused || content.trim() !== '' ? 'focused' : ''}`}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                onChange={handleInputChange}
+                placeholder="welcome"
+              ></textarea><br />
+
+                {image && <div className="preview-image"> <Image height={100} width={100} className="preview-image" src={image as string} alt='Preview' /></div>}
+                {gif && <div className="preview-image"> <Image width={100} height={100} className="preview-image" src={gif as string} alt='Preview' /></div>}
+                {audio && <ReactAudioPlayer
+                  src={audio as string}
+                  autoPlay
+                  loop
+                  controls
+                />}
+                {video &&
+                  <div className="preview-video">
+                    <video controls autoPlay>
+                      <source src={video as string} type="video/mp4" />
+                      <source src={video as string} type="video/ogg" />
+                    </video>
+                  </div>}
+              </div>
+              <hr className="hr" />
+              <div className="upload-buttons">
+                <UploadComponents onImageUpload={handleFileChange} onAudioUpload={handleAudioChange} onGifUpload={handleGifChange} onVideoUpload={handleVideoChange} notUpload={posting} />
+                {!createNftPost && (text || image || gif || video || audio) &&contractAddress&& <button className="post-button" id="post-b" onClick={handlePost} disabled={posting}>{(posting) ?
                   <Oval
                     visible={true}
                     height="20"

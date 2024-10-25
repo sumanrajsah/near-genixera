@@ -457,8 +457,9 @@ async function ShareModel(){
       <div className="posts-box" style={{borderStyle:(post.parent_post)?'dashed':'',borderTop:(post.parent_post)?'none':'',borderTopLeftRadius:(post.parent_post)?'0px':'',borderTopRightRadius:(post.parent_post)?'0px':''}} onClick={() => setShowPostDrop(false)} ref={postRef}>
         <div className="post-body" onClick={showPost}>
       {post?.on_chain && <div className="on-chain-title">
-        {post?.on_chain && (post.chain_data?.chain_id === "11155111" || "1") && <>This Post Live on <EthIcon/> Ethereum Network</>}
-        {post?.on_chain && (post.chain_data?.chain_id ===  "137") && <>This Post Live on Polygon Network</>}
+        {post?.on_chain && (post.chain_data?.chain_id === "11155111") && <>This Post Live on <EthIcon/> Ethereum Network</>}
+        {post?.on_chain && (post.chain_data?.chain_id === "1313161555") && <>This Post Live on Aurora Network</>}
+        {post?.on_chain && (post.chain_data?.chain_id ===  "80002") && <>This Post Live on Polygon Network</>}
       </div> }
           <p>{postAnalysis}</p>
           {post?.user_data?.profile && <PostProfile author_img={post.user_data.profile.image_url} author_name={post.user_data.profile.name} author_username={post.user_data.profile.username} time={displayText} />}

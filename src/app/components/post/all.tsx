@@ -137,6 +137,7 @@ export default function PostContainer({ load,tab }: scroll) {
         ))}
          {posts.length>0 && <p>already all catch up</p>}
       </div>}
+        {userData?.following_list.length==0&&<p>OOPs! Its Seems Like you are not following anyone.</p>}
     </div></>
 
   );
