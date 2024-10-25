@@ -4,7 +4,7 @@ import React, { ReactNode } from 'react'
 import { wagmiAdapter, projectId } from './config2'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createAppKit } from '@reown/appkit/react' 
-import {auroraTestnet, polygonAmoy, sepolia } from '@reown/appkit/networks'
+import {auroraTestnet, mainnet, polygonAmoy, sepolia } from '@reown/appkit/networks'
 import { cookieToInitialState, WagmiProvider, type Config } from 'wagmi'
 
 // Setup queryClient
@@ -32,8 +32,8 @@ const modal = createAppKit({
   },
   adapters: [wagmiAdapter],
   projectId,
-  networks: [auroraTestnet,polygonAmoy,sepolia],
-  defaultNetwork: sepolia,
+  networks: [auroraTestnet,polygonAmoy,sepolia,mainnet],
+  defaultNetwork: mainnet,
   metadata: metadata,
   features: {
     analytics: true, // Optional - defaults to your Cloud configuration
